@@ -6,15 +6,18 @@ import {
   GalleryHeaderContent,
   GalleryHeaderImageContainer,
   GallerySubHeader,
+  StaticConainer,
 } from "./styles.ts";
 import React from "react";
 import TornpaperImage from "./TornImage.tsx";
+import ImageGallery from "./ImageGallery.tsx";
+import { IMAGE_GALLERIES } from "./constant.ts";
 
 const Gallery1 = () => {
   const parentRef = React.useRef(null);
   return (
     <>
-      <GalleryContainer className="p-12">
+      <GalleryContainer className="p-8">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -43,12 +46,6 @@ const Gallery1 = () => {
                 dragSnapToOrigin
                 transition={{ duration: 10, type: "spring" }}
                 dragTransition={{ bounceStiffness: 11, bounceDamping: 10 }}
-                style={{
-                  pointerEvents: "all",
-                  cursor: "grab",
-                  position: "absolute",
-                  top: "10%",
-                }}
               >
                 <div>
                   <TornpaperImage
@@ -60,13 +57,6 @@ const Gallery1 = () => {
                 </div>
               </motion.div>
               <motion.div
-                style={{
-                  position: "absolute",
-                  top: "30%",
-                  right: "0%",
-                  pointerEvents: "all",
-                  cursor: "grab",
-                }}
                 drag
                 dragConstraints={parentRef}
                 dragElastic={0.01}
@@ -82,12 +72,6 @@ const Gallery1 = () => {
                 </div>
               </motion.div>
               <motion.div
-                style={{
-                  position: "absolute",
-                  top: "45%",
-                  pointerEvents: "all",
-                  cursor: "grab",
-                }}
                 drag
                 dragConstraints={parentRef}
                 dragElastic={0.01}
@@ -105,6 +89,23 @@ const Gallery1 = () => {
             </GalleryHeaderImageContainer>
           </GalleryHeaderContainer>
         </motion.div>
+        {IMAGE_GALLERIES.map((data, index) => {
+          return (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ margin: "-200px" }}
+              transition={{
+                duration: 1,
+                delay: 0.5,
+                // ease: [0, 0.71, 0.2, 1.01],
+              }}
+            >
+              <ImageGallery {...data} />;
+            </motion.div>
+          );
+        })}
       </GalleryContainer>
     </>
   );

@@ -10,6 +10,14 @@ export type WeatherData = {
   wind_speed_10m: string;
 };
 
+/**
+ * Fetches weather data from the open-meteo API and returns the data as a
+ * WeatherData object. The API call is made with the latitude and longitude
+ * of Bangalore, India and the current weather data is fetched for one day.
+ * The returned object contains the following properties: latitude, longitude,
+ * timezone, weatherCode, temperature, precipitation, and wind_speed_10m.
+ * @returns {WeatherData} The weather data for Bangalore, India.
+ */
 const fetchWeatherData = async (): Promise<WeatherData> => {
   const response = await fetch(
     "https://api.open-meteo.com/v1/forecast?latitude=12.9716&longitude=77.5946&current=temperature_2m,weather_code,precipitation,wind_speed_10m&timezone=auto&forecast_days=1"

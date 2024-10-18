@@ -126,7 +126,7 @@ export const SpaceContainer = styled.div`
 export const HeroHomeContainer = styled.div`
   position: relative; /* Or absolute if needed */
   z-index: 2; /* Higher z-index to appear above */
-  pointer-events: none;
+  pointer-events: all;
 `;
 
 export const JustAnotherContainer = styled.div`

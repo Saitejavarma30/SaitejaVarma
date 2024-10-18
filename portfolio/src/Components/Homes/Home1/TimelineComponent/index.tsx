@@ -14,6 +14,16 @@ import { Typography } from "@mui/material";
 import Card from "./Card.tsx";
 import { EXP_DATA } from "./constant.ts";
 
+/**
+ * CustomizedTimeline
+ *
+ * Timeline component for my work experience
+ *
+ * This component uses the MUI Timeline component to display my work experience in a timeline format.
+ * Each item in the timeline is a Card component that displays the job title, company, location, duration, and description.
+ * The timeline is an alternating timeline, meaning the cards will alternate between the left and right sides of the timeline.
+ */
+
 export default function CustomizedTimeline() {
   return (
     <Timeline position="alternate">

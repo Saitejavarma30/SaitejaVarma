@@ -4,6 +4,13 @@ import { Container, ImageContainer } from "./styles.ts";
 import { Language } from "@mui/icons-material";
 import { motion } from "framer-motion";
 
+/**
+ * Component for rendering an Language Icon with a tooltip that animates on hover.
+ *
+ * @param src - The source URL of the image.
+ * @param title - The title of the image tooltip.
+ * @param top - Optional flag to specify if the tooltip should be displayed on top.
+ */
 const AnimatedTooltipImage: React.FC<{
   src: string;
   title: string;

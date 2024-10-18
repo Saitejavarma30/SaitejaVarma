@@ -16,6 +16,15 @@ type CardProps = {
   location: string;
   company: string;
 };
+/**
+ * A Card component that displays a company, title, location, and
+ * description. The description is rendered as an unordered list.
+ *
+ * @param {string} title The title of the card.
+ * @param {string[]} description The description of the card, rendered as an unordered list.
+ * @param {string} location The location of the card.
+ * @param {string} company The company of the card.
+ */
 const Card: React.FC<CardProps> = ({
   title,
   description,

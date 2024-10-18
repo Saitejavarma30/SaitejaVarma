@@ -24,6 +24,22 @@ import {
 } from "lucide-react";
 import { getWeatherDescription } from "../utils.ts";
 
+/**
+ * A component that displays the weather information for a given location.
+ *
+ * @param {WeatherData} props The weather data object
+ * @returns {JSX.Element} The weather component
+ * @example
+ * <WeatherComponent
+ *   latitude="12.9716"
+ *   longitude="77.5946"
+ *   timezone="Asia/Kolkata"
+ *   weatherCode={0}
+ *   temperature={23}
+ *   precipitation={0}
+ *   wind_speed_10m={5}
+ * />
+ */
 const WeatherComponent: React.FC<WeatherData> = (props) => {
   const getWeatherIcon = (code: number) => {
     if (code === 0) return <Sun size={24} />;

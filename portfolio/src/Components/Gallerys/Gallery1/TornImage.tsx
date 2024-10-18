@@ -22,7 +22,7 @@ const TornpaperImage: React.FC<Props> = ({ ImageUrl, orientation }) => {
           delay: 0.5,
           ease: [0, 0.71, 0.2, 1.01],
         }}
-        style={{ width: "300px", margin: "auto", rotate: `${orientation}deg` }}
+        style={{ margin: "auto", rotate: `${orientation}deg` }}
       >
         {/* Apply the filter to an image or div */}
         <img

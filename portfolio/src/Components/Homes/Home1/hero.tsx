@@ -29,6 +29,12 @@ export const StaticImage = () => {
   return <StaticImageContainer src="images/Saiteja-avatar.png" />;
 };
 
+/**
+ * Component representing the Hero section of the webpage.
+ * Displays a greeting with an icon based on the time of day, followed by information about the user.
+ * Includes details about the user's profession, passion, and a brief about section.
+ * Also shows the user's preferred programming languages and weather information.
+ */
 const Hero = ({ className }: { className?: string }) => {
   const currentMonthIndex = moment().month();
   const currentMonthName = moment().format("MMMM"); // Full month name (e.g., 'August')

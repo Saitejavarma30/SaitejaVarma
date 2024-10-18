@@ -1,5 +1,11 @@
 import { RoundImage, StaticImageContainer } from "./styles.ts";
 
+/**
+ * A component that renders a rounded image of Saiteja.
+ *
+ * @return {React.ReactElement} A React element representing the component.
+ */
+
 const ImagerContainer = () => {
   return (
     <StaticImageContainer>
