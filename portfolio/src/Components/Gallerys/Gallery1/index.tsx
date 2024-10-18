@@ -13,6 +13,14 @@ import TornpaperImage from "./TornImage.tsx";
 import ImageGallery from "./ImageGallery.tsx";
 import { IMAGE_GALLERIES } from "./constant.ts";
 
+/**
+ * A gallery component that displays a header with a torn paper effect and
+ *   several images with a torn paper effect. The images are draggable and
+ *   have a spring-like transition when dragged.
+ *
+ * @returns {React.ReactElement} The gallery component.
+ */
+
 const Gallery1 = () => {
   const parentRef = React.useRef(null);
   return (

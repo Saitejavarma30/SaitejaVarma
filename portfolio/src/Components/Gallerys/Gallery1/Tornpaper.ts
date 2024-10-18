@@ -9,6 +9,27 @@ interface TornpaperProps {
   tornScale?: number;
 }
 
+/**
+ * A React component that adds an SVG filter to the document, which is a torn paper effect.
+ *
+ * The component takes the following props:
+ * - filterName: The name of the filter to be created. Defaults to "filter_tornpaper".
+ * - seed: A random seed to be used for the turbulence and noise. Defaults to a random number.
+ * - grungeFrequency: The frequency of the noise used for the grungy texture. Defaults to 0.03.
+ * - grungeScale: The scale of the grungy texture. Defaults to 3.
+ * - tornFrequency: The frequency of the noise used for the torn edge. Defaults to 0.05.
+ * - tornScale: The scale of the torn edge. Defaults to 10.
+ *
+ * The component will append an SVG to the document when it mounts, and remove it when it unmounts.
+ *
+ * @param {Object} props The props for the component.
+ * @param {string} [props.filterName="filter_tornpaper"] The name of the filter to be created.
+ * @param {number} [props.seed=Math.floor(1e7 * Math.random())] A random seed to be used for the turbulence and noise.
+ * @param {number} [props.grungeFrequency=0.03] The frequency of the noise used for the grungy texture.
+ * @param {number} [props.grungeScale=3] The scale of the grungy texture.
+ * @param {number} [props.tornFrequency=0.05] The frequency of the noise used for the torn edge.
+ * @param {number} [props.tornScale=10] The scale of the torn edge.
+ */
 const Tornpaper: React.FC<TornpaperProps> = ({
   filterName = "filter_tornpaper",
   seed = Math.floor(1e7 * Math.random()), // random seed

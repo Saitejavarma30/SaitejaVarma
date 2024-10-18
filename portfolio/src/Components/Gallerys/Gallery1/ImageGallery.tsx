@@ -18,6 +18,17 @@ type props = {
   images: string[];
 };
 
+/**
+ * A gallery component that displays a main image and multiple torn paper images
+ * scattered around it. The torn paper images are randomly positioned within the
+ * top 80% of the parent container and do not overlap with the main image or each
+ * other.
+ *
+ * @param {string} location - The location of the image
+ * @param {string} mainImage - The URL of the main image
+ * @param {string[]} images - An array of URLs of the torn paper images
+ * @returns A JSX element containing the gallery
+ */
 const ImageGallery: React.FC<props> = ({ location, mainImage, images }) => {
   const parentRef = useRef<HTMLDivElement | null>(null);
   const childWidth = 24; // Width in percentage
@@ -26,6 +37,12 @@ const ImageGallery: React.FC<props> = ({ location, mainImage, images }) => {
     []
   );
 
+  /**
+   * Randomizes the positions of the torn paper images by generating a new position for each
+   * image until it finds one that is not overlapping with any other image. The position is
+   * restricted to the top 80% of the parent container and does not overlap with the main
+   * image, which is centered in the container.
+   */
   const randomizePositions = () => {
     if (parentRef.current) {
       // Explicitly define the type for newPositions
@@ -48,7 +65,7 @@ const ImageGallery: React.FC<props> = ({ location, mainImage, images }) => {
       };
 
       const isOverlapping = (newPos: { top: number; left: number }) => {
-        const overlapThreshold = 10; // Adjust this value for more or less space between divs
+        const overlapThreshold = 10;
         return newPositions.some((pos) => {
           return (
             Math.abs(newPos.top - pos.top) < overlapThreshold &&
@@ -58,11 +75,10 @@ const ImageGallery: React.FC<props> = ({ location, mainImage, images }) => {
       };
 
       for (let i = 0; i < images.length; i++) {
-        // Change to 4 for four divs
         let newPos: { top: number; left: number };
         do {
           newPos = getRandomPosition();
-        } while (isOverlapping(newPos)); // Keep generating until we find a non-overlapping position
+        } while (isOverlapping(newPos));
 
         newPositions.push(newPos);
       }
@@ -73,7 +89,7 @@ const ImageGallery: React.FC<props> = ({ location, mainImage, images }) => {
 
   useEffect(() => {
     randomizePositions();
-  }, []); // Run once when the component mounts
+  }, []);
 
   return (
     <ImageGalleryContainer ref={parentRef}>
@@ -96,14 +112,11 @@ const ImageGallery: React.FC<props> = ({ location, mainImage, images }) => {
             dragConstraints={parentRef}
             dragElastic
             key={index}
-            // initial={{ opacity: 1, scale: 1 }}
-            // whileHover={{ scale: 1.2, opacity: 1 }}
-            // whileDrag={{ scale: 1.1, opacity: 1 }}
             style={{
               cursor: "grab",
               position: "absolute",
-              top: `${position.top}%`, // Use percentage for top
-              left: `${position.left}%`, // Use percentage for left
+              top: `${position.top}%`,
+              left: `${position.left}%`,
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
